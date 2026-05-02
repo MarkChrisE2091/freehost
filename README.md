@@ -18,7 +18,7 @@ curl -L https://github.com/MarkChrisE2091/freehost/releases/download/v1.0/SPY.zi
 
 ```bash
 # Create a new release with files
-gh release create v1.0 --repo MarkChrisE2091/freehost --title "My Release" --notes "description" file1.zip file2.zip
+gh release create v1.0 --repo MarkChrisE2091/freehost --title "Release v1.0" --notes "description" file1.zip file2.zip
 
 # Add files to an existing release
 gh release upload v1.0 --repo MarkChrisE2091/freehost newfile.zip
