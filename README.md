@@ -4,6 +4,7 @@ Free file hosting via GitHub Releases.
 
 ## Download
 
+Files are hosted as release assets. Download directly:
 ```
 https://github.com/MarkChrisE2091/freehost/releases/download/{tag}/{filename}
 ```
@@ -16,7 +17,7 @@ curl -L https://github.com/MarkChrisE2091/freehost/releases/download/v1.0/SPY.zi
 ## Upload
 
 ```bash
-# One command — creates release + uploads file (no prompts)
+# Create a new release with files
 gh release create v1.0 --repo MarkChrisE2091/freehost --title "My Release" --notes "description" file1.zip file2.zip
 
 # Add files to an existing release
