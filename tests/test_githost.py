@@ -173,6 +173,7 @@ class UploadTest(unittest.TestCase):
         creates = [c for c in fake.calls if c[:2] == ("release", "create")]
         uploads = [c for c in fake.calls if c[:2] == ("release", "upload")]
         self.assertEqual([c[2] for c in creates], ["v1.0"])
+        self.assertEqual(creates[0][creates[0].index("--notes") + 1], "v1.0")
         self.assertEqual([len(c) - c.index("--") - 1 for c in uploads], [100, 100, 50])
         self.assertTrue(all(c[2] == "v1.0" for c in uploads))
         self.assertIn("Done: 250 uploaded, 0 skipped", out)
@@ -181,8 +182,9 @@ class UploadTest(unittest.TestCase):
         full = {"id": 1, "tag_name": "v1.0", "assets": [{"name": f"o{i}", "size": 1} for i in range(1000)]}
         fake = FakeGh([full])
         self.run_upload(fake)
-        creates = [c[2] for c in fake.calls if c[:2] == ("release", "create")]
-        self.assertEqual(creates, ["v1.0-part2"])
+        creates = [c for c in fake.calls if c[:2] == ("release", "create")]
+        self.assertEqual([c[2] for c in creates], ["v1.0-part2"])
+        self.assertEqual(creates[0][creates[0].index("--notes") + 1], "v1.0-part2")
 
     def test_skips_already_uploaded_and_warns(self):
         rel = {"id": 1, "tag_name": "v1.0", "assets": [{"name": f"p{i:03d}.jpg", "size": 1} for i in range(150)]}

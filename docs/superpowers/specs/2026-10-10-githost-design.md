@@ -36,7 +36,7 @@ python githost.py download me/repo v1.0
    - Files with `#` or `[` in the name are skipped (warn, listing them) — gh can't upload them.
    - Two files with the same GitHub name → stop before uploading anything, listing the clashes.
 3. **Skip existing:** files already in the release (or its parts) are not sent to gh (warn, listing them). This is needed because gh fails the whole call if even one file is already in the release. Files on disk are never changed.
-4. **Split:** fill `v1.0` up to 1,000 files, then `v1.0-part2`, `v1.0-part3`, ... Create missing releases (title = tag, empty notes).
+4. **Split:** fill `v1.0` up to 1,000 files, then `v1.0-part2`, `v1.0-part3`, ... Create missing releases (title and notes = tag).
 5. **Send:** `gh release upload <tag> --repo <repo> -- <files>`, 100 files per call (Windows command-length limit).
    - On any failure: stop, show gh's error, and say `Run the same command again to finish the rest.` (step 3 skips what's done).
 

@@ -180,7 +180,7 @@ def upload(repo, tag, items):
     for n, batch in plan:
         name = part_tag(tag, n)
         if n not in parts:
-            gh("release", "create", name, "--repo", repo, "--title", name, "--notes", "", *CREATE_FLAGS)
+            gh("release", "create", name, "--repo", repo, "--title", name, "--notes", name, *CREATE_FLAGS)
         for i in range(0, len(batch), FILES_PER_CALL):
             group = batch[i:i + FILES_PER_CALL]
             try:
