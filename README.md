@@ -2,8 +2,6 @@
 
 Free file hosting via GitHub Releases.
 
-## Download
-
 Files are hosted as release assets. Download directly:
 ```
 https://github.com/MarkChrisE2091/freehost/releases/download/{tag}/{filename}
@@ -12,6 +10,18 @@ https://github.com/MarkChrisE2091/freehost/releases/download/{tag}/{filename}
 Example:
 ```bash
 curl -L https://github.com/MarkChrisE2091/freehost/releases/download/v1.0/SPY.zip -o SPY.zip
+```
+
+## Download
+
+### All files in a release
+
+```bash
+# curl (no login, public repos only)
+curl -s https://api.github.com/repos/MarkChrisE2091/freehost/releases/tags/v1.0 | grep -o '"browser_download_url": *"[^"]*"' | cut -d'"' -f4 | xargs -n1 curl -LO
+
+# gh (requires gh auth login, work for private repo)
+gh release download v1.0 --repo MarkChrisE2091/freehost --dir myfolder
 ```
 
 ## Upload
